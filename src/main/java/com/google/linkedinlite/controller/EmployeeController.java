@@ -1,8 +1,10 @@
 package com.google.linkedinlite.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +69,12 @@ public class EmployeeController {
 	@GetMapping("/{id}")
 	public ResponseStructure<Employee> findEmployeeById(@PathVariable int id){
 		return service.findEmployeeById(id);
+		
+	}
+	@Scheduled( fixedRate = 2000)
+	public void hi() {
+		System.out.println("hi method is invoked in :"+ LocalDateTime.now());
+		
 		
 	}
 }
